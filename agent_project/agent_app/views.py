@@ -1,3 +1,4 @@
+import os
 import openai
 from django.shortcuts import render
 from django.conf import settings
@@ -6,7 +7,7 @@ from rest_framework.response import Response
 from .models import Document
 from .serializers import DocumentSerializer
 
-openai.api_key = 'your-openai-api-key'
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 class DocumentViewSet(viewsets.ModelViewSet):
     queryset = Document.objects.all()
